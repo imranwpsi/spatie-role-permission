@@ -15847,6 +15847,42 @@
      
 }
 
+    namespace Illuminate\Database\Query { 
+            /**
+     * 
+     *
+     */ 
+        class Builder {
+                    /**
+         * 
+         *
+         * @see \Faisal50x\QueryFilter\QueryFilterServiceProvider::boot()
+         * @param \Faisal50x\QueryFilter\QueryFilter $filter
+         * @static 
+         */ 
+        public static function filter($filter)
+        {
+                        return \Illuminate\Database\Query\Builder::filter($filter);
+        }
+                    /**
+         * 
+         *
+         * @see \Faisal50x\QueryFilter\QueryFilterServiceProvider::boot()
+         * @param mixed $perPage
+         * @param mixed $column
+         * @param mixed $pageName
+         * @param mixed $page
+         * @static 
+         */ 
+        public static function filterPaginate($perPage = null, $column = [], $pageName = 'page', $page = null)
+        {
+                        return \Illuminate\Database\Query\Builder::filterPaginate($perPage, $column, $pageName, $page);
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Routing { 
             /**
      * 
@@ -17170,6 +17206,33 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->unless($value, $callback, $default);
+            }
+             
+                /**
+             * 
+             *
+             * @see \Faisal50x\QueryFilter\QueryFilterServiceProvider::boot()
+             * @param \Faisal50x\QueryFilter\QueryFilter $filter
+             * @static 
+             */ 
+            public static function filter($filter)
+            {
+                                return \Illuminate\Database\Eloquent\Builder::filter($filter);
+            }
+             
+                /**
+             * 
+             *
+             * @see \Faisal50x\QueryFilter\QueryFilterServiceProvider::boot()
+             * @param mixed $perPage
+             * @param mixed $column
+             * @param mixed $pageName
+             * @param mixed $page
+             * @static 
+             */ 
+            public static function filterPaginate($perPage = null, $column = [], $pageName = 'page', $page = null)
+            {
+                                return \Illuminate\Database\Eloquent\Builder::filterPaginate($perPage, $column, $pageName, $page);
             }
              
                 /**

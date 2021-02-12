@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\QueryFilters\RolePermissionFilter;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RolePermissionController extends Controller
 {
-    public function index()
+    public function index(RolePermissionFilter $filter)
     {
-        $roles = Role::with('permissions')->get();
+        $roles = Role::all();
+        $selected_role = Role::with('permissions')->filter($filter)->first();
+        $selected_permissions = $selected_role->permissions->pluck('id')->toArray();
         $permissions = Permission::all();
-        return view('role-permission', compact('roles', 'permissions'));
+        return view('role-permission', compact('roles', 'permissions', 'selected_permissions'));
     }
     /**
      * @param Request $request

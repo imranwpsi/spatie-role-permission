@@ -25,6 +25,6 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
-    Route::get('role-permission', [RolePermissionController::class, 'index']);
+    Route::get('role-permission', [RolePermissionController::class, 'index'])->name('role-permission');
     Route::post('role-assign', [RolePermissionController::class, 'roleAssign']);
 });
