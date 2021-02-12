@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\RolePermissionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function () {
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
+    Route::resource('role', RoleController::class);
+    Route::resource('permission', PermissionController::class);
+    Route::get('role-permission', [RolePermissionController::class, 'index']);
+    Route::post('role-assign', [RolePermissionController::class, 'roleAssign']);
+});
