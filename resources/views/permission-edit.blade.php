@@ -10,23 +10,23 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 flex justify-between">
                     <div class="text-2xl">
-                        Edit Role
+                        Edit Permission
                     </div>
                     <a
-                        href="{{ route('role.index') }}"
+                        href="{{ route('permission.index') }}"
                         class="bg-transparent border border-gray-500 hover:border-indigo-500
                         text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full focus:outline-none"
                     >
-                        Role List
+                        Permission List
                     </a>
                 </div>
                 <div class="flex justify-center p-5">
-                    <form action="{{ route('role.update', $role->id) }}" method="post" class="w-1/3">
+                    <form action="{{ route('permission.update', $permission->id) }}" method="post" class="w-1/3">
                         @csrf
                         @method('put')
                         <div class="flex flex-col mt-5 mb-4 md:w-full">
-                            <label class="mb-2 font-bold text-md text-gray-500 text-grey-darkest" for="name">Enter Role</label>
-                            <input class="border border-gray-300 py-2 px-3 text-grey-darkest" type="text" name="name" id="name" value="{{ $role->name }}">
+                            <label class="mb-2 font-bold text-md text-gray-500 text-grey-darkest" for="name">Enter Permission</label>
+                            <input class="border border-gray-300 py-2 px-3 text-grey-darkest" type="text" name="name" id="name" value="{{ $permission->name }}">
                         </div>
 
                         <div class="flex justify-end pt-5">
@@ -39,6 +39,5 @@
             </div>
         </div>
     </div>
-
 </x-app-layout>
 
