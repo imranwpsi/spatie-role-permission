@@ -91,10 +91,17 @@ class RoleController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        try {
+            $role->delete();
+            \Toastr::success('Role deleted successfully.', '', ["progressBar"=> true,"closeButton"=> true,]);
+        } catch (\Exception $e) {
+            \Log::emergency("File:" . $e->getFile() . "Line:" . $e->getLine() . "Message:" . $e->getMessage());
+            \Toastr::error('Something went to wrong.', '', ["progressBar"=> true,"closeButton"=> true,]);
+        }
+        return back();
     }
 }
