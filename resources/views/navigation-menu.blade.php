@@ -27,8 +27,13 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('role-permission') }}" :active="request()->routeIs('role-permission')">
+                    <x-jet-nav-link href="{{ route('permission-assign') }}" :active="request()->routeIs('permission-assign')">
                         {{ __('Assign Permission') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('role-assign') }}" :active="request()->routeIs('role-assign')">
+                        {{ __('Assign Role') }}
                     </x-jet-nav-link>
                 </div>
             </div>

@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 @empty
-                    No Data Found
+                    <p class="p-5">No Data Found</p>
                 @endforelse
 
             </div>

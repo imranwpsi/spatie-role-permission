@@ -61,11 +61,11 @@ class RoleController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        return view('role-edit', compact('role'));
     }
 
     /**
@@ -73,11 +73,18 @@ class RoleController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        try {
+            $role->update($request->all());
+            \Toastr::success('Role updated successfully.', '', ["progressBar"=> true,"closeButton"=> true,]);
+        } catch (\Exception $e) {
+            \Log::emergency("File:" . $e->getFile() . "Line:" . $e->getLine() . "Message:" . $e->getMessage());
+            \Toastr::error('Something went to wrong.', '', ["progressBar"=> true,"closeButton"=> true,]);
+        }
+        return redirect()->route('role.index');
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\RoleAssignController;
+use App\Http\Controllers\PermissionAssignController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DashboardController;
@@ -25,6 +26,9 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::resource('role', RoleController::class);
     Route::resource('permission', PermissionController::class);
-    Route::get('role-permission', [RolePermissionController::class, 'index'])->name('role-permission');
-    Route::post('role-assign', [RolePermissionController::class, 'roleAssign']);
+    Route::get('permission-assign', [PermissionAssignController::class, 'index'])->name('permission-assign');
+    Route::post('permission-assign', [PermissionAssignController::class, 'permissionAssign']);
+
+    Route::get('role-assign', [RoleAssignController::class, 'index'])->name('role-assign');
+    Route::post('role-assign', [RoleAssignController::class, 'roleAssign']);
 });

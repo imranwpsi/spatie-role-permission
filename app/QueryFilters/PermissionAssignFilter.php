@@ -6,7 +6,7 @@ namespace App\QueryFilters;
 
 use Faisal50x\QueryFilter\QueryFilter;
 
-class RolePermissionFilter extends QueryFilter
+class PermissionAssignFilter extends QueryFilter
 {
     /**
      * @param $query
